@@ -1,245 +1,3 @@
--- Create ScreenGui
-local ScreenGui = Instance.new("ScreenGui")
-ScreenGui.Name = "EggPurchaseGui"
-ScreenGui.ResetOnSpawn = false
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-
--- Create main frame
-local MainFrame = Instance.new("Frame")
-MainFrame.Size = UDim2.new(0, 220, 0, 240)
-MainFrame.Position = UDim2.new(0.5, -110, 0.5, -120)
-MainFrame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-MainFrame.BorderSizePixel = 2
-MainFrame.BorderColor3 = Color3.fromRGB(255, 255, 255)
-MainFrame.Parent = ScreenGui
-
-local UICorner = Instance.new("UICorner")
-UICorner.CornerRadius = UDim.new(0, 8)
-UICorner.Parent = MainFrame
-
--- Create title
-local Title = Instance.new("TextLabel")
-Title.Size = UDim2.new(0.7, 0, 0, 30)
-Title.Position = UDim2.new(0, 0, 0, 0)
-Title.BackgroundTransparency = 1
-Title.Text = "Egg Manager"
-Title.TextColor3 = Color3.fromRGB(255, 255, 255)
-Title.TextSize = 16
-Title.Font = Enum.Font.GothamBold
-Title.Parent = MainFrame
-
--- Create close button
-local CloseButton = Instance.new("TextButton")
-CloseButton.Size = UDim2.new(0, 30, 0, 30)
-CloseButton.Position = UDim2.new(1, -35, 0, 0)
-CloseButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-CloseButton.Text = "X"
-CloseButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CloseButton.TextSize = 18
-CloseButton.Font = Enum.Font.GothamBold
-CloseButton.Parent = MainFrame
-
-local CloseCorner = Instance.new("UICorner")
-CloseCorner.CornerRadius = UDim.new(0, 6)
-CloseCorner.Parent = CloseButton
-
--- Tab buttons frame
-local TabFrame = Instance.new("Frame")
-TabFrame.Size = UDim2.new(1, 0, 0, 35)
-TabFrame.Position = UDim2.new(0, 0, 0, 35)
-TabFrame.BackgroundTransparency = 1
-TabFrame.Parent = MainFrame
-
--- Tab 1 Button (Auto Purchase)
-local Tab1Button = Instance.new("TextButton")
-Tab1Button.Size = UDim2.new(0.23, 0, 1, -5)
-Tab1Button.Position = UDim2.new(0.02, 0, 0, 0)
-Tab1Button.BackgroundColor3 = Color3.fromRGB(50, 150, 250)
-Tab1Button.Text = "Auto Purchase"
-Tab1Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-Tab1Button.TextSize = 9
-Tab1Button.Font = Enum.Font.GothamBold
-Tab1Button.Parent = TabFrame
-
-local Tab1Corner = Instance.new("UICorner")
-Tab1Corner.CornerRadius = UDim.new(0, 6)
-Tab1Corner.Parent = Tab1Button
-
--- Tab 2 Button (Egg Spam)
-local Tab2Button = Instance.new("TextButton")
-Tab2Button.Size = UDim2.new(0.23, 0, 1, -5)
-Tab2Button.Position = UDim2.new(0.26, 0, 0, 0)
-Tab2Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-Tab2Button.Text = "Egg Spam"
-Tab2Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-Tab2Button.TextSize = 9
-Tab2Button.Font = Enum.Font.GothamBold
-Tab2Button.Parent = TabFrame
-
-local Tab2Corner = Instance.new("UICorner")
-Tab2Corner.CornerRadius = UDim.new(0, 6)
-Tab2Corner.Parent = Tab2Button
-
--- Tab 3 Button (Auto Claim Candies)
-local Tab3Button = Instance.new("TextButton")
-Tab3Button.Size = UDim2.new(0.23, 0, 1, -5)
-Tab3Button.Position = UDim2.new(0.50, 0, 0, 0)
-Tab3Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-Tab3Button.Text = "Claim Candies"
-Tab3Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-Tab3Button.TextSize = 9
-Tab3Button.Font = Enum.Font.GothamBold
-Tab3Button.Parent = TabFrame
-
-local Tab3Corner = Instance.new("UICorner")
-Tab3Corner.CornerRadius = UDim.new(0, 6)
-Tab3Corner.Parent = Tab3Button
-
--- Tab 4 Button (3 Egg Open)
-local Tab4Button = Instance.new("TextButton")
-Tab4Button.Size = UDim2.new(0.23, 0, 1, -5)
-Tab4Button.Position = UDim2.new(0.74, 0, 0, 0)
-Tab4Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-Tab4Button.Text = "3 Egg Open"
-Tab4Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-Tab4Button.TextSize = 9
-Tab4Button.Font = Enum.Font.GothamBold
-Tab4Button.Parent = TabFrame
-
-local Tab4Corner = Instance.new("UICorner")
-Tab4Corner.CornerRadius = UDim.new(0, 6)
-Tab4Corner.Parent = Tab4Button
-
--- Content Frame for Tab 1 (Auto Purchase)
-local Tab1Content = Instance.new("Frame")
-Tab1Content.Size = UDim2.new(1, 0, 1, -75)
-Tab1Content.Position = UDim2.new(0, 0, 0, 75)
-Tab1Content.BackgroundTransparency = 1
-Tab1Content.Visible = true
-Tab1Content.Parent = MainFrame
-
--- Content Frame for Tab 2 (Egg Spam)
-local Tab2Content = Instance.new("Frame")
-Tab2Content.Size = UDim2.new(1, 0, 1, -115)
-Tab2Content.Position = UDim2.new(0, 0, 0, 115)
-Tab2Content.BackgroundTransparency = 1
-Tab2Content.Visible = false
-Tab2Content.Parent = MainFrame
-
--- Egg type selector frame (only visible in Tab 2)
-local EggTypeFrame = Instance.new("ScrollingFrame")
-EggTypeFrame.Size = UDim2.new(1, 0, 1, -115)
-EggTypeFrame.Position = UDim2.new(0, 0, 0, 115)
-EggTypeFrame.BackgroundTransparency = 1
-EggTypeFrame.BorderSizePixel = 0
-EggTypeFrame.Visible = false
-EggTypeFrame.CanvasSize = UDim2.new(0, 0, 0, 280)
-EggTypeFrame.ScrollBarThickness = 6
-EggTypeFrame.Parent = MainFrame
-
--- Content Frame for Tab 3 (Auto Claim Candies)
-local Tab3Content = Instance.new("Frame")
-Tab3Content.Size = UDim2.new(1, 0, 1, -75)
-Tab3Content.Position = UDim2.new(0, 0, 0, 75)
-Tab3Content.BackgroundTransparency = 1
-Tab3Content.Visible = false
-Tab3Content.Parent = MainFrame
-
--- Content Frame for Tab 4 (3 Egg Open)
-local Tab4Content = Instance.new("Frame")
-Tab4Content.Size = UDim2.new(1, 0, 1, -75)
-Tab4Content.Position = UDim2.new(0, 0, 0, 75)
-Tab4Content.BackgroundTransparency = 1
-Tab4Content.Visible = false
-Tab4Content.Parent = MainFrame
-
--- Toggle states
-local toggleStates = {false, false, false}
-local toggleConnections = {nil, nil, nil}
-local spamToggles = {false, false, false}
-local spamConnections = {nil, nil, nil}
-local candyToggle = false
-local candyConnection = nil
-local eggToggles = {false, false, false, false, false, false, false}
-local eggConnections = {nil, nil, nil, nil, nil, nil, nil}
-local eggNames = {"Pumpkin Egg", "Grave Egg", "Bat Egg", "Ghost Egg", "Cauldron Egg", "Spider Egg", "Reaper Egg"}
-local threeEggToggle = false
-local threeEggConnection = nil
-
--- Track placed egg positions
-local placedEggPositions = {}
-
--- Function to purchase egg
-local function purchaseEgg(tier)
-	pcall(function()
-		local args = {11, "PurchaseEgg", tier, 3}
-		game:GetService("ReplicatedStorage")
-			:WaitForChild("Network")
-			:WaitForChild("Plots_Invoke")
-			:InvokeServer(unpack(args))
-	end)
-end
-
--- Function to claim candies
-local function claimCandies()
-	for i = 1, 10 do
-		pcall(function()
-			local args = {i}
-			game:GetService("ReplicatedStorage")
-				:WaitForChild("Network")
-				:WaitForChild("HalloweenWorld_Claim")
-				:InvokeServer(unpack(args))
-		end)
-		task.wait(0.1)
-	end
-end
-
--- Enhanced spam egg function with position tracking
-local function spamEgg(eggIndex)
-	placedEggPositions[eggIndex] = {}
-	
-	for i = 1, 10 do
-		task.spawn(function()
-			task.wait((i-1) * 0.01)
-			pcall(function()
-				local args = {i, eggNames[eggIndex]}
-				local result = game:GetService("ReplicatedStorage")
-					:WaitForChild("Network")
-					:WaitForChild("HalloweenWorld_PlaceEgg")
-					:InvokeServer(unpack(args))
-				
-				placedEggPositions[eggIndex][i] = {
-					slot = i,
-					eggName = eggNames[eggIndex],
-					placed = true
-				}
-			end)
-		end)
-	end
-	
-	task.wait(0.15)
-	
-	for i = 1, 10 do
-		task.spawn(function()
-			task.wait((i-1) * 0.01)
-			pcall(function()
-				if placedEggPositions[eggIndex] and placedEggPositions[eggIndex][i] then
-					local eggData = placedEggPositions[eggIndex][i]
-					local args = {eggData.slot}
-					
-					game:GetService("ReplicatedStorage")
-						:WaitForChild("Network")
-						:WaitForChild("HalloweenWorld_PickUp")
-						:InvokeServer(unpack(args))
-					
-					placedEggPositions[eggIndex][i].placed = false
-				end
-			end)
-		end)
-	end
-end
-
--- 3 Egg Open Functions
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Network = ReplicatedStorage:WaitForChild("Network")
 local Library = ReplicatedStorage.Library
@@ -248,8 +6,11 @@ local Items = require(Library.Items.Types)
 local HalloweenWorld = require(Library.Types.HalloweenWorld)
 local Players = game:GetService("Players")
 local LocalPlayer = Players.LocalPlayer
+local Plots = workspace.__THINGS.Plots
 local LocalPlot = PlotCmds.GetLocal()
 local Save = require(Library.Client.Save).Get()
+
+local KeepCoins = false
 
 local EggsPriority = {
     "Coffin Egg",
@@ -262,13 +23,107 @@ local EggsPriority = {
     "Pumpkin Egg",
 }
 
+local Upgrades = {
+    "HalloweenCandyMultiplier",
+    "HalloweenEggLuck",
+    "HalloweenTrickOrTreatLuck",
+    "HalloweenMoreDiamonds",
+    "HalloweenMoreWitchHats",
+    "HalloweenHugeLuck",
+    "HalloweenTitanicLuck"
+}
+
+local EggsTiersAutobuy = {
+    House1 = false,
+    House2 = false,
+    House3 = false,
+    House4 = false,
+    House5 = false
+}
+local Coins = 0
+
+local function GetCurrentCoins()
+    if Save.Inventory and Save.Inventory.Currency then
+        for _, currencyData in pairs(Save.Inventory.Currency) do
+            if string.find(currencyData.id, "HalloweenCoins") then
+                Coins = currencyData._am or 0
+                return Coins
+            end
+        end
+    end
+    return 0
+end
+
 local function UnequipPet(slot)
-    local args = {[1] = slot}
+    local args = {
+        [1] = slot
+    }
     Network:WaitForChild("HalloweenWorld_PickUp"):InvokeServer(unpack(args))
+end
+
+local function CollectCoins()
+    while true do
+        for i = 1, 10 do
+            local args = { i }
+            Network:WaitForChild('HalloweenWorld_Claim'):InvokeServer(unpack(args))
+            wait(1)
+        end
+    end
+end
+
+local function Buy1EggX1()
+    local args = {
+        [1] = LocalPlot:GetId(),
+        [2] = 'PurchaseEgg',
+        [3] = 1,
+        [4] = 1,
+    }
+    Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+end
+
+local function Buy2EggX1()
+    local args = {
+        [1] = LocalPlot:GetId(),
+        [2] = 'PurchaseEgg',
+        [3] = 2,
+        [4] = 1,
+    }
+    Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+end
+
+local function Buy3EggX1()
+    local args = {
+        [1] = LocalPlot:GetId(),
+        [2] = 'PurchaseEgg',
+        [3] = 3,
+        [4] = 1,
+    }
+    Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+end
+
+local function Buy4EggX1()
+    local args = {
+        [1] = LocalPlot:GetId(),
+        [2] = 'PurchaseEgg',
+        [3] = 4,
+        [4] = 1,
+    }
+    Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+end
+
+local function Buy5EggX1()
+    local args = {
+        [1] = LocalPlot:GetId(),
+        [2] = 'PurchaseEgg',
+        [3] = 5,
+        [4] = 1,
+    }
+    Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
 end
 
 local function GetPetsFromPillars()
     if not LocalPlot then
+        print(":x: Участок не найден")
         return {}
     end
     
@@ -288,6 +143,7 @@ local function GetPetsFromPillars()
                 })
             end
         else
+            -- Если пиллар пустой, добавляем как empty с доходом 0
             table.insert(petsList, {
                 slot = i,
                 name = "empty",
@@ -301,9 +157,88 @@ local function GetPetsFromPillars()
     return petsList
 end
 
+local function GetTotalPetsIncome()
+    if not LocalPlot then
+        print(":x: Участок не найден")
+        return 0
+    end
+    
+    local totalIncome = 0
+    for i = 1, 10 do
+        local pillarData = LocalPlot:Save("Pillar_" .. i)
+        if pillarData and pillarData.Class == "HPillar" then
+            local success, pet = pcall(function()
+                return Items.From("HPillar", pillarData.Data)
+            end)
+            if success and pet then
+                local income = HalloweenWorld.ComputePayout(LocalPlayer, pet, 1)
+                totalIncome = totalIncome + income
+            end
+        end
+    end
+    
+    return totalIncome
+end
+
+local function GetHouseStatusTable()
+    local localPlot = PlotCmds.GetLocal()
+    local houseStatusTable = {}
+    
+    if localPlot and localPlot:GetDirectory()._id == "HalloweenWorld" then
+        local unlockedHouses = localPlot:Save("HouseUnlocked") or 1
+        
+        for i = 1, 5 do
+            local isUnlocked = i <= unlockedHouses
+            houseStatusTable[i] = {
+                HouseNumber = i,
+                IsUnlocked = isUnlocked,
+                Status = isUnlocked and "UNLOCKED" or "LOCKED"
+            }
+        end
+        
+        return houseStatusTable
+    else
+        return {}
+    end
+end
+
+local function GetLastUnlockedHouseNumber()
+    local houseStatusTable = GetHouseStatusTable()
+    
+    for i = 5, 1, -1 do
+        if houseStatusTable[i] and houseStatusTable[i].IsUnlocked then
+            return i
+        end
+    end
+    
+    return 0
+end
+
+-- Использование
+local lastHouseNumber = GetLastUnlockedHouseNumber()
+local houses = GetHouseStatusTable()
+local totalCPS = GetTotalPetsIncome()
+local pets = GetPetsFromPillars()
+
+
+local function ShuffleTable(t)
+    local shuffled = {}
+    for i = 1, #t do
+        shuffled[i] = t[i]
+    end
+    
+    for i = #shuffled, 2, -1 do
+        local j = math.random(1, i)
+        shuffled[i], shuffled[j] = shuffled[j], shuffled[i]
+    end
+    
+    return shuffled
+end
+
 local function ReplaceWeakest()
     local pets = GetPetsFromPillars()
     
+    -- Убираем питомцев
     for i = 1, 3 do
         if pets[i] then
             task.spawn(function()
@@ -311,14 +246,17 @@ local function ReplaceWeakest()
             end)
         end
     end
+    task.wait()
     
-    task.wait(1)
-    
+    -- Ставим случайные яйца
     for i = 1, 3 do
         if pets[i] then
             task.spawn(function()
                 local pet = pets[i]
-                for _, Egg in ipairs(EggsPriority) do
+                -- Перемешиваем список яиц
+                local shuffledEggs = ShuffleTable(EggsPriority)
+                
+                for _, Egg in ipairs(shuffledEggs) do
                     local args = {
                         [1] = pet.slot,
                         [2] = Egg,
@@ -328,291 +266,223 @@ local function ReplaceWeakest()
             end)
         end
     end
+end
+
+local function BuyEggsConstantlyToggle()
+    local totalCPS = GetTotalPetsIncome()
+
+    if totalCPS >= 3000000 and EggsTiersAutobuy.House5 == false and KeepCoins == false then
+        EggsTiersAutobuy.House5 = true
+        task.spawn(function()
+            Buy1EggX1()
+        end)
+    elseif totalCPS >= 500000 and EggsTiersAutobuy.House4 == false and KeepCoins == false then
+        EggsTiersAutobuy.House4 = true
+        task.spawn(function()
+            Buy2EggX1()
+        end)
+    elseif totalCPS >= 80000 and EggsTiersAutobuy.House3 == false and KeepCoins == false then
+        EggsTiersAutobuy.House3 = true
+        task.spawn(function()
+            Buy3EggX1()
+        end)
+    elseif totalCPS >= 8000 and EggsTiersAutobuy.House2 == false and KeepCoins == false then
+        EggsTiersAutobuy.House2 = true
+        task.spawn(function()
+            Buy4EggX1()
+        end)
+    elseif totalCPS >= 60 and EggsTiersAutobuy.House1 == false and KeepCoins == false then
+        EggsTiersAutobuy.House1 = true
+        task.spawn(function()
+            Buy5EggX1()
+        end)
+    else
+        EggsTiersAutobuy.House1 = false
+        EggsTiersAutobuy.House2 = false
+        EggsTiersAutobuy.House3 = false
+        EggsTiersAutobuy.House4 = false
+        EggsTiersAutobuy.House5 = false
+    end
+end
+
+local function UnlockHouses()
+    if not LocalPlot then
+        print("❌ Участок не найден для UnlockHouses")
+        return
+    end
     
-    task.wait(4)
+    for i = 1, 5 do
+        local args = {
+            [1] = LocalPlot:GetId(),
+            [2] = 'PurchaseHouse',
+            [3] = i,
+        }
+        Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+        task.wait(0.5) -- Задержка между запросами
+    end
 end
 
--- Function to create toggle buttons for Auto Purchase
-local function createToggleButton(text, tier, yPosition)
-	local Button = Instance.new("TextButton")
-	Button.Size = UDim2.new(0.9, 0, 0, 30)
-	Button.Position = UDim2.new(0.05, 0, 0, yPosition)
-	Button.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-	Button.Text = text .. " [OFF]"
-	Button.TextColor3 = Color3.fromRGB(255, 255, 255)
-	Button.TextSize = 12
-	Button.Font = Enum.Font.Gotham
-	Button.Parent = Tab1Content
-	
-	local ButtonCorner = Instance.new("UICorner")
-	ButtonCorner.CornerRadius = UDim.new(0, 6)
-	ButtonCorner.Parent = Button
-	
-	Button.MouseButton1Click:Connect(function()
-		toggleStates[tier] = not toggleStates[tier]
-		
-		if toggleStates[tier] then
-			Button.BackgroundColor3 = Color3.fromRGB(50, 200, 50)
-			Button.Text = text .. " [ON]"
-			
-			toggleConnections[tier] = game:GetService("RunService").Heartbeat:Connect(function()
-				if toggleStates[tier] then
-					purchaseEgg(tier)
-				end
-			end)
-		else
-			Button.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-			Button.Text = text .. " [OFF]"
-			
-			if toggleConnections[tier] then
-				toggleConnections[tier]:Disconnect()
-				toggleConnections[tier] = nil
-			end
-		end
-	end)
+local function BuyUpgrades()
+    if KeepCoins == false then
+        for _, upgrade in ipairs(Upgrades) do
+            local args = {
+                [1] = upgrade
+            }
+            Network:WaitForChild("EventUpgrades: Purchase"):InvokeServer(unpack(args))
+            task.wait(0.5)
+        end
+    end
 end
 
--- Create buttons for Tab 1 (Auto Purchase)
-createToggleButton("Buy House 1 eggs", 1, 5)
-createToggleButton("Buy House 2 eggs", 2, 40)
-createToggleButton("Buy House 3 eggs", 3, 75)
+task.wait(10)
 
--- Create buttons for Tab 2 (Egg Spam)
-local eggButtons = {}
-for i = 1, 7 do
-	local EggButton = Instance.new("TextButton")
-	EggButton.Size = UDim2.new(0.9, 0, 0, 35)
-	EggButton.Position = UDim2.new(0.05, 0, 0, (i-1) * 40 + 5)
-	EggButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-	EggButton.Text = eggNames[i] .. " [OFF]"
-	EggButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-	EggButton.TextSize = 13
-	EggButton.Font = Enum.Font.Gotham
-	EggButton.Parent = EggTypeFrame
-	
-	local EggBtnCorner = Instance.new("UICorner")
-	EggBtnCorner.CornerRadius = UDim.new(0, 6)
-	EggBtnCorner.Parent = EggButton
-	
-	eggButtons[i] = EggButton
-	
-	EggButton.MouseButton1Click:Connect(function()
-		eggToggles[i] = not eggToggles[i]
-		
-		if eggToggles[i] then
-			EggButton.BackgroundColor3 = Color3.fromRGB(50, 200, 50)
-			EggButton.Text = eggNames[i] .. " [ON]"
-			
-			eggConnections[i] = task.spawn(function()
-				while eggToggles[i] do
-					spamEgg(i)
-					task.wait(0.3)
-				end
-			end)
-		else
-			EggButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-			EggButton.Text = eggNames[i] .. " [OFF]"
-			
-			eggConnections[i] = nil
-			placedEggPositions[i] = nil
-		end
-	end)
-end
+local RunService = game:GetService('RunService')
+local Lighting = game:GetService('Lighting')
 
--- Create button for Tab 3 (Auto Claim Candies)
-local CandyButton = Instance.new("TextButton")
-CandyButton.Size = UDim2.new(0.9, 0, 0, 40)
-CandyButton.Position = UDim2.new(0.05, 0, 0, 20)
-CandyButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-CandyButton.Text = "Auto Claim Candies [OFF]"
-CandyButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-CandyButton.TextSize = 14
-CandyButton.Font = Enum.Font.GothamBold
-CandyButton.Parent = Tab3Content
+RunService:Set3dRenderingEnabled(false)
+game:GetService('StarterGui'):SetCore('TopbarEnabled', false)
 
-local CandyCorner = Instance.new("UICorner")
-CandyCorner.CornerRadius = UDim.new(0, 6)
-CandyCorner.Parent = CandyButton
+local Coins = GetCurrentCoins()
+print(Coins)
 
-CandyButton.MouseButton1Click:Connect(function()
-	candyToggle = not candyToggle
-	
-	if candyToggle then
-		CandyButton.BackgroundColor3 = Color3.fromRGB(50, 200, 50)
-		CandyButton.Text = "Auto Claim Candies [ON]"
-		
-		claimCandies()
-		
-		candyConnection = task.spawn(function()
-			while candyToggle do
-				task.wait(2)
-				if candyToggle then
-					claimCandies()
-				end
-			end
-		end)
-	else
-		CandyButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-		CandyButton.Text = "Auto Claim Candies [OFF]"
-		candyConnection = nil
-	end
+local totalCPS = GetTotalPetsIncome()
+print(totalCPS)
+
+print(LocalPlot)
+
+task.spawn(function()
+    while true do
+        ReplaceWeakest()
+        task.wait(4.05)
+    end
 end)
 
--- Create button for Tab 4 (3 Egg Open)
-local ThreeEggButton = Instance.new("TextButton")
-ThreeEggButton.Size = UDim2.new(0.9, 0, 0, 40)
-ThreeEggButton.Position = UDim2.new(0.05, 0, 0, 20)
-ThreeEggButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-ThreeEggButton.Text = "Auto 3 Egg Replace [OFF]"
-ThreeEggButton.TextColor3 = Color3.fromRGB(255, 255, 255)
-ThreeEggButton.TextSize = 13
-ThreeEggButton.Font = Enum.Font.GothamBold
-ThreeEggButton.Parent = Tab4Content
+task.wait(1)
 
-local ThreeEggCorner = Instance.new("UICorner")
-ThreeEggCorner.CornerRadius = UDim.new(0, 6)
-ThreeEggCorner.Parent = ThreeEggButton
-
-ThreeEggButton.MouseButton1Click:Connect(function()
-	threeEggToggle = not threeEggToggle
-	
-	if threeEggToggle then
-		ThreeEggButton.BackgroundColor3 = Color3.fromRGB(50, 200, 50)
-		ThreeEggButton.Text = "Auto 3 Egg Replace [ON]"
-		
-		threeEggConnection = task.spawn(function()
-			while threeEggToggle do
-				ReplaceWeakest()
-				task.wait(10)
-			end
-		end)
-	else
-		ThreeEggButton.BackgroundColor3 = Color3.fromRGB(200, 50, 50)
-		ThreeEggButton.Text = "Auto 3 Egg Replace [OFF]"
-		threeEggConnection = nil
-	end
+task.spawn(function ()
+    while true do
+        BuyUpgrades()
+        task.wait(10)
+    end
 end)
 
--- Tab switching
-Tab1Button.MouseButton1Click:Connect(function()
-	Tab1Content.Visible = true
-	Tab2Content.Visible = false
-	Tab3Content.Visible = false
-	Tab4Content.Visible = false
-	EggTypeFrame.Visible = false
-	Tab1Button.BackgroundColor3 = Color3.fromRGB(50, 150, 250)
-	Tab2Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-	Tab3Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-	Tab4Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+task.wait(1)
+
+task.spawn(function ()
+    while true do
+        BuyEggsConstantlyToggle()
+        task.wait(15)
+    end
 end)
 
-Tab2Button.MouseButton1Click:Connect(function()
-	Tab1Content.Visible = false
-	Tab2Content.Visible = false
-	Tab3Content.Visible = false
-	Tab4Content.Visible = false
-	EggTypeFrame.Visible = true
-	Tab1Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-	Tab2Button.BackgroundColor3 = Color3.fromRGB(50, 150, 250)
-	Tab3Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-	Tab4Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+task.wait(1)
+
+task.spawn(function ()
+    while true do
+        local args = {
+                [1] = LocalPlot:GetId(),
+                [2] = 'PurchaseEgg',
+                [3] = 1,
+                [4] = 3,
+            }
+            Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+        task.wait()
+    end
 end)
 
-Tab3Button.MouseButton1Click:Connect(function()
-	Tab1Content.Visible = false
-	Tab2Content.Visible = false
-	Tab3Content.Visible = true
-	Tab4Content.Visible = false
-	EggTypeFrame.Visible = false
-	Tab1Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-	Tab2Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-	Tab3Button.BackgroundColor3 = Color3.fromRGB(50, 150, 250)
-	Tab4Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
+task.wait(1)
+
+task.spawn(function ()
+    local totalCPS = GetTotalPetsIncome()
+
+    if totalCPS >= 7000 then
+        while true do
+        local args = {
+                [1] = LocalPlot:GetId(),
+                [2] = 'PurchaseEgg',
+                [3] = 2,
+                [4] = 3,
+            }
+            Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+        task.wait()
+    end
+    end
 end)
 
-Tab4Button.MouseButton1Click:Connect(function()
-	Tab1Content.Visible = false
-	Tab2Content.Visible = false
-	Tab3Content.Visible = false
-	Tab4Content.Visible = true
-	EggTypeFrame.Visible = false
-	Tab1Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-	Tab2Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-	Tab3Button.BackgroundColor3 = Color3.fromRGB(70, 70, 70)
-	Tab4Button.BackgroundColor3 = Color3.fromRGB(50, 150, 250)
+task.wait(1)
+
+task.spawn(function ()
+    while true do
+        local lastHouseNumber = GetLastUnlockedHouseNumber()
+        local Coins = GetCurrentCoins()
+        local totalCPS = GetTotalPetsIncome()
+
+        if KeepCoins == false then
+            if lastHouseNumber == 5 then
+                local args = {
+                    [1] = LocalPlot:GetId(),
+                    [2] = 'PurchaseEgg',
+                    [3] = 5,
+                    [4] = 1,
+                }
+                Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+            elseif lastHouseNumber == 4 then
+                local eggCost = 300000
+                local buyEggTimer = (eggCost * 2) / totalCPS
+
+                if Coins >= eggCost * 2 then
+                    task.wait(buyEggTimer)
+                    local args = {
+                        [1] = LocalPlot:GetId(),
+                        [2] = 'PurchaseEgg',
+                        [3] = 4,
+                        [4] = 1,
+                    }
+                    Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+                end
+            elseif lastHouseNumber == 3 then
+                local eggCost = 50000
+                local buyEggTimer = (eggCost * 1.1) / totalCPS
+
+                if Coins >= eggCost * 1.1 then
+                    task.wait(buyEggTimer)
+                    local args = {
+                        [1] = LocalPlot:GetId(),
+                        [2] = 'PurchaseEgg',
+                        [3] = 3,
+                        [4] = 1,
+                    }
+                    Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+                end
+            elseif lastHouseNumber == 2 then
+                local eggCost = 5000
+                local buyEggTimer = (eggCost * 1.1) / totalCPS
+
+                if Coins >= eggCost * 1.1 then
+                    task.wait(buyEggTimer)
+                    local args = {
+                        [1] = LocalPlot:GetId(),
+                        [2] = 'PurchaseEgg',
+                        [3] = 2,
+                        [4] = 1,
+                    }
+                    Network:WaitForChild('Plots_Invoke'):InvokeServer(unpack(args))
+                end
+            end
+        end
+        task.wait(1) 
+    end
 end)
 
--- Close button functionality
-CloseButton.MouseButton1Click:Connect(function()
-	for i = 1, 3 do
-		if toggleStates then
-			toggleStates[i] = false
-		end
-		if spamToggles then
-			spamToggles[i] = false
-		end
-		if toggleConnections and toggleConnections[i] then
-			pcall(function()
-				toggleConnections[i]:Disconnect()
-			end)
-			toggleConnections[i] = nil
-		end
-		if spamConnections and spamConnections[i] then
-			pcall(function()
-				spamConnections[i]:Disconnect()
-			end)
-			spamConnections[i] = nil
-		end
-	end
-	for i = 1, 7 do
-		if eggToggles then
-			eggToggles[i] = false
-		end
-		eggConnections[i] = nil
-	end
-	candyToggle = false
-	candyConnection = nil
-	threeEggToggle = false
-	threeEggConnection = nil
-	placedEggPositions = {}
-	pcall(function()
-		ScreenGui:Destroy()
-	end)
-end)
+task.wait(1)
 
--- Make frame draggable
-local dragging
-local dragInput
-local dragStart
-local startPos
+CollectCoins()
 
-local function update(input)
-	local delta = input.Position - dragStart
-	MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
-end
+task.wait(1)
 
-MainFrame.InputBegan:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseButton1 then
-		dragging = true
-		dragStart = input.Position
-		startPos = MainFrame.Position
-		
-		input.Changed:Connect(function()
-			if input.UserInputState == Enum.UserInputState.End then
-				dragging = false
-			end
-		end)
-	end
-end)
-
-MainFrame.InputChanged:Connect(function(input)
-	if input.UserInputType == Enum.UserInputType.MouseMovement then
-		dragInput = input
-	end
-end)
-
-game:GetService("UserInputService").InputChanged:Connect(function(input)
-	if input == dragInput and dragging then
-		update(input)
-	end
+task.wait(function ()
+    while true do
+        UnlockHouses()
+        task.wait(5)
+    end
 end)
