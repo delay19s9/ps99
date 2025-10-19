@@ -171,11 +171,13 @@ local placedEggPositions = {}
 
 -- Function to purchase egg
 local function purchaseEgg(tier)
-	local args = {159, "PurchaseEgg", tier, 3}
-	game:GetService("ReplicatedStorage")
-		:WaitForChild("Network")
-		:WaitForChild("Plots_Invoke")
-		:InvokeServer(unpack(args))
+	pcall(function()
+		local args = {159, "PurchaseEgg", tier, 3}
+		game:GetService("ReplicatedStorage")
+			:WaitForChild("Network")
+			:WaitForChild("Plots_Invoke")
+			:InvokeServer(unpack(args))
+	end)
 end
 
 -- Function to claim candies
