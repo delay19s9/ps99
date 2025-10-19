@@ -172,7 +172,7 @@ local placedEggPositions = {}
 -- Function to purchase egg
 local function purchaseEgg(tier)
 	pcall(function()
-		local args = {159, "PurchaseEgg", tier, 3}
+		local args = {11, "PurchaseEgg", tier, 3}
 		game:GetService("ReplicatedStorage")
 			:WaitForChild("Network")
 			:WaitForChild("Plots_Invoke")
